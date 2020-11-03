@@ -26,6 +26,7 @@ public class JSONArray extends JSON implements List<Object> {
 
 
     public JSONArray() {
+        list = new ArrayList<>(16);
     }
 
     public JSONObject getJSONObject(int index) {
@@ -215,7 +216,10 @@ public class JSONArray extends JSON implements List<Object> {
     public String toJSONString() {
         return JSON.toJSONString(list);
     }
-
+    @Override
+    public String toString() {
+        return toJSONString();
+    }
     @Override
     public int size() {
         return list.size();

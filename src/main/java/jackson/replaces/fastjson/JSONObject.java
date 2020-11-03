@@ -232,6 +232,11 @@ public class JSONObject extends JSON implements Map<String, Object> {
     }
 
     @Override
+    public String toString() {
+        return toJSONString();
+    }
+
+    @Override
     public Object remove(Object key) {
         return map.remove(key);
     }
