@@ -4,10 +4,10 @@
 
 1. 第一步,添加依赖
 ```xml
- 		<dependency>
+<dependency>
             <groupId>com.github.zjb-it</groupId>
             <artifactId>jackson-replace-fastjson</artifactId>
-            <version>1.0</version>
+            <version>${latest.version}</version>
         </dependency>
 ```
 2. 第二步,全局替换包名
