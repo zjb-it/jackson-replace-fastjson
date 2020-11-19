@@ -2,6 +2,7 @@ package jackson.replaces.fastjson;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jackson.replaces.fastjson.exception.ParseException;
@@ -71,8 +72,10 @@ public class JSON {
     public static <T> List<T> parseArray(String jsonString, Class<T> clazz) {
         final ObjectMapper objectMapper = new ObjectMapper();
         try {
-            return objectMapper.readValue(jsonString, new TypeReference<List<T>>() {
-            });
+            //return objectMapper.readValue(jsonString, new TypeReference<List<T>>() {
+            //});
+            JavaType javaType = objectMapper.getTypeFactory().constructParametricType(List.class,clazz);
+            return objectMapper.readValue(jsonString, javaType);
         } catch (JsonProcessingException e) {
             throw new ParseException(e);
         }
