@@ -9,11 +9,13 @@ import java.io.PrintWriter;
  * @author zjb
  */
 public class ParseException extends RuntimeException {
-    private JsonProcessingException processingException;
+    private Exception processingException;
 
-    public ParseException(JsonProcessingException processingException) {
+
+    public ParseException(Exception processingException) {
         this.processingException = processingException;
     }
+
 
     public ParseException(String message) {
         super(message);
@@ -57,20 +59,5 @@ public class ParseException extends RuntimeException {
     @Override
     public void printStackTrace(PrintWriter s) {
         processingException.printStackTrace(s);
-    }
-
-    @Override
-    public synchronized Throwable fillInStackTrace() {
-        return processingException.fillInStackTrace();
-    }
-
-    @Override
-    public StackTraceElement[] getStackTrace() {
-        return processingException.getStackTrace();
-    }
-
-    @Override
-    public void setStackTrace(StackTraceElement[] stackTrace) {
-        processingException.setStackTrace(stackTrace);
     }
 }

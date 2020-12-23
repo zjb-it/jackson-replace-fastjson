@@ -19,7 +19,7 @@ public class JSON {
     public static String toJSONString(Object jsonString) {
         try {
             return new ObjectMapper().writeValueAsString(jsonString);
-        } catch (JsonProcessingException e) {
+        } catch (Exception e) {
             throw new ParseException(e);
         }
     }
@@ -33,7 +33,7 @@ public class JSON {
         }
         try {
             return new ObjectMapper().readValue(jsonString, JsonNode.class);
-        } catch (JsonProcessingException e) {
+        } catch (Exception e) {
             throw new ParseException(e);
         }
     }
@@ -43,7 +43,7 @@ public class JSON {
         try {
             final Map map = objectMapper.readValue(jsonString, Map.class);
             return mapToJsonObject(map);
-        } catch (JsonProcessingException e) {
+        } catch (Exception e) {
             throw new ParseException(e);
         }
 
@@ -53,7 +53,7 @@ public class JSON {
         final ObjectMapper objectMapper = new ObjectMapper();
         try {
             return objectMapper.readValue(jsonString, clazz);
-        } catch (JsonProcessingException e) {
+        } catch (Exception e) {
             throw new ParseException(e);
         }
     }
@@ -63,7 +63,7 @@ public class JSON {
         try {
             final List list = objectMapper.readValue(jsonString, List.class);
             return listConvertToJsonArray(list);
-        } catch (JsonProcessingException e) {
+        } catch (Exception e) {
             throw new ParseException(e);
         }
     }
@@ -76,7 +76,7 @@ public class JSON {
             //});
             JavaType javaType = objectMapper.getTypeFactory().constructParametricType(List.class,clazz);
             return objectMapper.readValue(jsonString, javaType);
-        } catch (JsonProcessingException e) {
+        } catch (Exception e) {
             throw new ParseException(e);
         }
     }
