@@ -17,8 +17,9 @@ public class DataTest {
                 "}";
         JSONObject json = JSON.parseObject(data);
         try {
-            JSONArray shouldBeNull = json.getJSONArray("somekeynotexists");
-            Assertions.assertNull(shouldBeNull);
+            JSONArray shouldNotNull = json.getJSONArray("somekeynotexists");
+            Assertions.assertNotNull(shouldNotNull);
+            Assertions.assertEquals(0, shouldNotNull.size());
         } catch (Exception e) {
             Assertions.fail();
         }
