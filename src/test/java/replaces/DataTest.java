@@ -3,8 +3,25 @@ package replaces;
 import jackson.replaces.fastjson.JSON;
 import jackson.replaces.fastjson.JSONArray;
 import jackson.replaces.fastjson.JSONObject;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
-public class Test {
+public class DataTest {
+
+    @Test
+    public void testParseInnerArray() {
+        String data = "{\n" +
+                "  \"key\": \"value\"\n" +
+                "}";
+        JSONObject json = JSON.parseObject(data);
+        try {
+            JSONArray shouldBeNull = json.getJSONArray("somekeynotexists");
+            Assertions.assertNull(shouldBeNull);
+        } catch (Exception e) {
+            Assertions.fail();
+        }
+    }
+
     public static void main(String[] args) {
         String a = "[\n" +
                 "    {\n" +

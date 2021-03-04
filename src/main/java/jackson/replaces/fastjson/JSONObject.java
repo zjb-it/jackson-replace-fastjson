@@ -51,6 +51,10 @@ public class JSONObject extends JSON implements Map<String, Object> {
     public JSONArray getJSONArray(String key) {
         Object value = map.get(key);
 
+        if (value == null) {
+            return null;
+        }
+
         if (value instanceof JSONArray) {
             return (JSONArray) value;
         }
