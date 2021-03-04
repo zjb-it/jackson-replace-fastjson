@@ -3,6 +3,7 @@
 因为fastjson的安全漏洞,项目需求需要全面替换fastjson,所以写了这个jar包,jackson快速替换Fastjson
 
 1. 第一步,添加依赖
+   最新版本信息 https://github.com/zjb-it/jackson-replace-fastjson/packages/651197
 ```xml
 <dependency>
             <groupId>com.github.zjb-it</groupId>
