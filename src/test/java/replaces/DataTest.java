@@ -6,6 +6,8 @@ import jackson.replaces.fastjson.JSONObject;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.io.Serializable;
+
 public class DataTest {
 
     @Test
@@ -20,6 +22,35 @@ public class DataTest {
         } catch (Exception e) {
             Assertions.fail();
         }
+    }
+
+    @Test
+    public void testToJSONString() {
+        class Haha implements Serializable {
+            private String a;
+            private String b;
+
+            public String getA() {
+                return a;
+            }
+
+            public void setA(String a) {
+                this.a = a;
+            }
+
+            public String getB() {
+                return b;
+            }
+
+            public void setB(String b) {
+                this.b = b;
+            }
+        }
+
+        Haha haha = new Haha();
+        haha.setA("1");
+        String data = JSON.toJSONString(haha);
+        Assertions.assertEquals("{\"a\":\"1\"}", data);
     }
 
     public static void main(String[] args) {

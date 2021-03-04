@@ -1,5 +1,6 @@
 package jackson.replaces.fastjson;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JavaType;
@@ -18,7 +19,7 @@ public class JSON {
 
     public static String toJSONString(Object jsonString) {
         try {
-            return new ObjectMapper().writeValueAsString(jsonString);
+            return new ObjectMapper().setSerializationInclusion(JsonInclude.Include.NON_NULL).writeValueAsString(jsonString);
         } catch (Exception e) {
             throw new ParseException(e);
         }
